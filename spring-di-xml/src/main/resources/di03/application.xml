@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 声明student对象
+    注入: 就是赋值的意思
+    简单类型: spring中规定java基本数据类型和String都是简单类型
+    di: 给属性赋值
+    1. set注入 (简单注入) : spring调用类的set方法,你可以在set方法中完成属性赋值1
+    1）简单类型的set注入
+     <bean id="xx" class="xx" >
+        <property name="属性名字"   value="此属性的值"  />
+        一个property只能给一个属性赋值
+        <property../>
+    2) 引用类型的set注入
+       <bean id="xx" class="yyy" >
+        <property name="属性名称"   ref="bean的id(对象的名称)"  />
+       </bean>
+     2、构造注入： spring调用类有参数构造方法,在创建对象的同时,在构造方法中给属性赋值
+       构造使用 <constructor-arg> 标签
+       <constructor-arg> 标签： 一个<constructor-arg> 表示构造方法一个参数
+       <constructor-arg> 标签属性:
+        name: 表示构造方法的形参名
+        index: 表示构造方法的参数的位置,参数从左往右位置是0，1，2的顺序
+        value: 构造方法的形参类型是简单类型的,使用value
+        ref:构造方法的行参类型是引用类型的,使用ref
+    -->
+
+
+    <!--使用name属性实现构造注入-->
+    <bean id="student3" class="com.company.di03.Student" >
+        <constructor-arg name="myName" value="张三" />
+        <constructor-arg name="myAge" value="19" />
+        <constructor-arg name="mySchool" ref="mySchool3" />
+    </bean>
+
+    <!--使用index属性-->
+    <bean id="student4" class="com.company.di03.Student" >
+        <constructor-arg index="0" value="张三" />
+        <constructor-arg index="1" value="19" />
+        <constructor-arg index="2" ref="mySchool3" />
+    </bean>
+
+    <!--省略index属性-->
+    <bean id="student5" class="com.company.di03.Student" >
+        <constructor-arg  value="张良" />
+        <constructor-arg  value="19" />
+        <constructor-arg  ref="mySchool3" />
+    </bean>
+
+    <bean id="mySchool3" class="com.company.di03.School" >
+        <property name="name" value="希望小学"/>
+        <property name="address" value="北京二环路"/>
+    </bean>
+
+
+    <!--创建File,使用构造注入
+      分级为:
+         aaWeb 项目(父级目录)
+            - 子文件目录（"readme.txt"）
+      value="父级文件全限定地址(xxxxx/xxxxx/aaWeb)"
+      value="子级目录的具体文件readme.txt"
+    这里必须填入地址要不项目会报错
+    -->
+    <bean id="file" class="java.io.File">
+        <constructor-arg name="parent" value="/System/Volumes/Data/Security/work-file/idea_manage/spring-example/spring-di-xml"/>
+        <constructor-arg name="child" value="readme.txt"/>
+    </bean>
+</beans>
