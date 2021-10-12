@@ -20,12 +20,16 @@ public class Student {
 
 //    @Value(value = "张飞")
 
-    @Value("张飞")
+//    @Value("张飞")
+
+    @Value("${myName}")
     private String name;
 
 //    @Value(value = "20")
 
-    @Value("20")
+//    @Value("20")
+
+    @Value("${myAge}")
     private Integer age;
 
 //    @Resource

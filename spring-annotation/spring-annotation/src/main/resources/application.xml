@@ -5,5 +5,18 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
 
-    <context:component-scan base-package="com.company.entity" />
+<!--    <context:component-scan base-package="com.company.entity" />-->
+
+<!--    <context:component-scan base-package="com.company.entity" />-->
+<!--    <context:component-scan base-package="com.company.entity2" />-->
+<!--    <context:component-scan base-package="com.company.entity;com.company.entity2" />-->
+<!--    <context:component-scan base-package="com.company" />-->
+<!--    <context:component-scan base-package="com.company.entity2" />-->
+
+<!--    <context:component-scan base-package="com.company.entity3" />-->
+<!--    <context:component-scan base-package="com.company.entity4" />-->
+<!--    <context:component-scan base-package="com.company.entity5" />-->
+    <context:component-scan base-package="com.company.entity6" />
+
+    <context:property-placeholder location="classpath:test.properties" />
 </beans>

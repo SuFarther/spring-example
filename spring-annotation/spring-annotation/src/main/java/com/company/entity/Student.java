@@ -10,7 +10,16 @@ import org.springframework.stereotype.Component;
  * @Description 主键扫描
  * @createTime 2021年10月12日 16:13:13
  */
-@Component(value = "student")
+//使用value属性,指定对象名称
+//@Component(value = "student")
+
+//省略value
+//@Component("student")
+
+//不指定对象名称,由spring提供默认名称: 类名的首字母小写
+//@Component
+
+@Component("student2")
 public class Student {
     private String name;
     private Integer age;
