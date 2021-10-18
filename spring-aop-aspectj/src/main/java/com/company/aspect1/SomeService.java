@@ -16,4 +16,11 @@ public interface SomeService {
      * @param age
      */
     void doSomething(String name,Integer age);
+
+    /**
+     * 做其他事
+     * @param email
+     * @param age
+     */
+    void doOther(String email,Integer age);
 }
