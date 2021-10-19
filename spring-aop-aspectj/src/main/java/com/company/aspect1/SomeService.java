@@ -19,8 +19,8 @@ public interface SomeService {
 
     /**
      * 做其他事
-     * @param email
+     * @param name
      * @param age
      */
-    void doOther(String email,Integer age);
+    String doOther(String name,Integer age);
 }

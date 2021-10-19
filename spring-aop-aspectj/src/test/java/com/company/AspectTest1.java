@@ -24,4 +24,15 @@ public class AspectTest1 {
         proxy.doSomething("lili",29);
 
     }
+
+
+    @Test
+    public void testAspect2(){
+        String config = "applicationContext.xml";
+        ApplicationContext application = new ClassPathXmlApplicationContext(config);
+        //从容器中获取对象
+        SomeService proxy = (SomeService) application.getBean("someService");
+        //通过代理对象执行方法,实现目标方法执行时,增强了功能
+        String str = proxy.doOther("zhangsan", 20);
+    }
 }

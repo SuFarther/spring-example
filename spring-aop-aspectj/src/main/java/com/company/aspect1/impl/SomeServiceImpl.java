@@ -19,9 +19,11 @@ public class SomeServiceImpl implements SomeService {
 
 
     @Override
-    public void doOther(String email, Integer age) {
+    public String doOther(String name,Integer age) {
         //给doSome方法增加一个功能,在doSome()执行之前,输出方法的执行时间
         System.out.println("===目标方法doOther()====");
+        return "abc";
     }
+
 
 }
