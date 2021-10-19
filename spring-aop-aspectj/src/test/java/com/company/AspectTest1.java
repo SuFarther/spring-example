@@ -1,6 +1,7 @@
 package com.company;
 
 import com.company.aspect1.SomeService;
+import com.company.aspect2.SomeServiceImpl;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -65,4 +66,12 @@ public class AspectTest1 {
         proxy.doThird();
     }
 
+    @Test
+    public void testAspect6(){
+        String config = "applicationContext.xml";
+        ApplicationContext application = new ClassPathXmlApplicationContext(config);
+        //从容器中获取对象
+        SomeService proxy = (SomeService) application.getBean("someService");
+        proxy.doThird();
+    }
 }
