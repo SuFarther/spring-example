@@ -2,10 +2,7 @@ package com.company.aspect1;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.*;
 
 import java.util.Date;
 
@@ -200,5 +197,68 @@ public class MyAspect {
 
         //返回目标方法的执行结果
         return result;
+    }
+
+    /**
+     * 异常通知方法的定义格式
+     *  1.public
+     *  2.没有返回值
+     *  3.方法名称自定义
+     *  4.方法有个一个Exception， 如果还有是JoinPoint,
+     */
+
+    /**
+     * @AfterThrowing:异常通知
+     *     属性：1. value 切入点表达式
+     *          2. throwing 自定义的变量，表示目标方法抛出的异常对象。
+     *             变量名必须和方法的参数名一样
+     * 特点：
+     *   1. 在目标方法抛出异常时执行的
+     *   2. 可以做异常的监控程序， 监控目标方法执行时是不是有异常。
+     *      如果有异常，可以发送邮件，短信进行通知
+     *
+     *  执行就是：
+     *   try{
+     *       SomeServiceImpl.doSecond(..)
+     *   }catch(Exception e){
+     *       myAfterThrowing(e);
+     *   }
+     */
+    @AfterThrowing(value = "execution(* *..SomeServiceImpl.doSecond(..))",
+            throwing = "ex")
+    public void myAfterThrowing(Exception ex) {
+        System.out.println("异常通知：方法发生异常时，执行："+ex.getMessage());
+        //发送邮件，短信，通知开发人员
+    }
+
+    /**
+     * 最终通知方法的定义格式
+     *  1.public
+     *  2.没有返回值
+     *  3.方法名称自定义
+     *  4.方法没有参数，  如果还有是JoinPoint,
+     */
+
+    /**
+     * @After :最终通知
+     *    属性： value 切入点表达式
+     *    位置： 在方法的上面
+     * 特点：
+     *  1.总是会执行
+     *  2.在目标方法之后执行的
+     *
+     *  try{
+     *      SomeServiceImpl.doThird(..)
+     *  }catch(Exception e){
+     *
+     *  }finally{
+     *      myAfter()
+     *  }
+     *
+     */
+    @After(value = "execution(* *..SomeServiceImpl.doThird(..))")
+    public  void  myAfter(){
+        System.out.println("执行最终通知，总是会被执行的代码");
+        //一般做资源清除工作的。
     }
 }

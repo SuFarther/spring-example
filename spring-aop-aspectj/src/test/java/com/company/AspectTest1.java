@@ -46,4 +46,23 @@ public class AspectTest1 {
         String str = proxy.doFirst("zhangsan", 22);
         System.out.println("str ==" +str);
     }
+
+    @Test
+    public void testAspect4(){
+        String config = "applicationContext.xml";
+        ApplicationContext application = new ClassPathXmlApplicationContext(config);
+        //从容器中获取对象
+        SomeService proxy = (SomeService) application.getBean("someService");
+        proxy.doSecond();
+    }
+
+    @Test
+    public void testAspect5(){
+        String config = "applicationContext.xml";
+        ApplicationContext application = new ClassPathXmlApplicationContext(config);
+        //从容器中获取对象
+        SomeService proxy = (SomeService) application.getBean("someService");
+        proxy.doThird();
+    }
+
 }

@@ -31,4 +31,19 @@ public interface SomeService {
      * @return
      */
     String doFirst(String name,Integer age);
+
+
+    /**
+     *
+     * 异常通知
+     */
+    void doSecond();
+
+
+    /**
+     *
+     * 最终通知
+     */
+    void doThird();
+
 }

@@ -31,5 +31,15 @@ public class SomeServiceImpl implements SomeService {
         return "doFirst";
     }
 
+    @Override
+    public void doSecond() {
+        System.out.println("===目标方法doSecond()===="+ (10/0));
+    }
+
+    @Override
+    public void doThird() {
+        System.out.println("===目标方法doThird()===="+ (10/0));
+    }
+
 
 }
