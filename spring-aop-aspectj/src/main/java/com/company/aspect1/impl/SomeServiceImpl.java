@@ -38,7 +38,7 @@ public class SomeServiceImpl implements SomeService {
 
     @Override
     public void doThird() {
-        System.out.println("===目标方法doThird()===="+ (10/0));
+        System.out.println("===目标方法doThird()====");
     }
 
 
