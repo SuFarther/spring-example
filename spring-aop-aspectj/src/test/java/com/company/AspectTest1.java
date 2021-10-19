@@ -35,4 +35,15 @@ public class AspectTest1 {
         //通过代理对象执行方法,实现目标方法执行时,增强了功能
         String str = proxy.doOther("zhangsan", 20);
     }
+
+
+    @Test
+    public void testAspect3(){
+        String config = "applicationContext.xml";
+        ApplicationContext application = new ClassPathXmlApplicationContext(config);
+        //从容器中获取对象
+        SomeService proxy = (SomeService) application.getBean("someService");
+        String str = proxy.doFirst("zhangsan", 22);
+        System.out.println("str ==" +str);
+    }
 }

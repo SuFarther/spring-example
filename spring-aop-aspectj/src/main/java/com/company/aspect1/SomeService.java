@@ -11,16 +11,24 @@ package com.company.aspect1;
 public interface SomeService {
 
     /**
-     * 做什么事
+     * 前置通知,做什么事
      * @param name
      * @param age
      */
     void doSomething(String name,Integer age);
 
     /**
-     * 做其他事
+     * 后置通知,做其他事
      * @param name
      * @param age
      */
     String doOther(String name,Integer age);
+
+    /**
+     * 环绕通知,做的第一件事
+     * @param name
+     * @param age
+     * @return
+     */
+    String doFirst(String name,Integer age);
 }

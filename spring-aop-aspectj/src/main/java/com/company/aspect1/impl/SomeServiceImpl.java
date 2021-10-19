@@ -25,5 +25,11 @@ public class SomeServiceImpl implements SomeService {
         return "abc";
     }
 
+    @Override
+    public String doFirst(String name, Integer age) {
+        System.out.println("===目标方法doFirst()====");
+        return "doFirst";
+    }
+
 
 }
