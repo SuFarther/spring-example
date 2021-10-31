@@ -37,7 +37,7 @@ public class BuyGoodsServiceImpl implements BuyGoodsService {
         if (goods == null){
             //商品不存在
             throw  new NullPointerException("商品的编号:"+goodsId+",商品不存在");
-        }else if(goods.getAmount() == null){
+        }else if(goods.getAmount() < nums){
             //商品库存不足
             throw new NotEnoughException("商品的编号:"+goodsId+",商品库存不足");
         }
